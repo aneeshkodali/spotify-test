@@ -6,16 +6,19 @@
 
 
 #### IMPORT
+import os
+from dotenv import load_dotenv
 from flask import Flask
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
 #### APP SETUP
 app = Flask(__name__)
+load_dotenv()
 
 ## Spotify
-cid = 'e801ceda6ea445aa977c9e671d2a68cc'
-secret = '3142006f1eb943a7a9fd42caf042ba97'
+cid = os.getenv('SPOTIFY_CLIENT_ID')
+secret = os.getenv('SPOTIFY_SECRET_ID')
 #token = 'BQBdXPZug3XPbOsN5ta1kapirUGcDT_z4YcMV-Abm47PXdwU49Td86tuBSzbzUDbXIwRKlBdpYLy4tiQ07p6zr5BGjNnpKyTJZM9dQdW8UZnVX_cSdaDoVWm-l_Aq1DKuIyjt8HqNw'
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
