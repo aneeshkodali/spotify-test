@@ -8,7 +8,7 @@
 #### IMPORT
 import os
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, redirect
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
@@ -37,8 +37,22 @@ def index():
 def search(term):
     term_spotify = term.replace('_','+')
 
-    test = sp.search(q=term_spotify, type='track', limit=1)
-    return test
+    termSearch = sp.search(q=term_spotify, type='track', limit=1)
+    return termSearch['tracks']
+
+# 62zFEHfAYl5kdHYOivj4BC
+# 6sbXGUn9V9ZaLwLdOfpKRE
+@app.route('/audio-analysis/<string:id>', methods=['GET'])
+def getAudioAnalysis(id):
+    audio_analysis = sp.audio_analysis(id)
+    return audio_analysis
+
+@app.route('/audio-features/<string:id>', methods=['GET'])
+def getAudioFeatures(id):
+    #uri = f"spotify:track:{id}"
+    audio_features = sp.audio_features(id)
+    return {'response': audio_features}
+
 
 if __name__ == "__main__":
     app.run(debug=True)
