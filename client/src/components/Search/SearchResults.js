@@ -2,7 +2,6 @@ import React from 'react';
 import SearchResult from './SearchResult';
 
 const SearchResults = ({ searchResults }) => {
-    console.log(searchResults[0]);
 
     const searchResultsRendered = searchResults.map(searchResult => {
         return (
@@ -10,7 +9,8 @@ const SearchResults = ({ searchResults }) => {
                 <SearchResult searchResult={searchResult} />
             </React.Fragment>
         )
-    })
+    });
+
     return (
         <div className="ui cards">
             {searchResultsRendered}

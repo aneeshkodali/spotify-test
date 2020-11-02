@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import server from '../api/server';
 
-import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
+import SearchBar from './Search/SearchBar';
+import SearchResults from './Search/SearchResults';
 
 const App = () => {
 
