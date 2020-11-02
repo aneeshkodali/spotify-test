@@ -5,7 +5,7 @@ const App = () => {
 
     const [test, setTest] = useState(null);
     const search = async () => {
-        const response = await axios.get('http://localhost:5000');
+        const response = await axios.get('/');
         const { data } = response;
         console.log(response)
     }
