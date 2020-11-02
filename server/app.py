@@ -35,12 +35,11 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 def index():
     return "Hi"
 
-@app.route('/search/<string:term>', methods=['GET'])
+@app.route('/server/search/<string:term>', methods=['GET'])
 def search(term):
-    term_spotify = term.replace('_','+')
-
-    termSearch = sp.search(q=term_spotify, type='track', limit=1)
-    return termSearch['tracks']
+    #term_spotify = term.replace('_','+')
+    search_results = sp.search(q=term, type='track', limit=1)
+    return {'data': search_results}
 
 # 62zFEHfAYl5kdHYOivj4BC
 # 6sbXGUn9V9ZaLwLdOfpKRE
