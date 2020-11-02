@@ -21,25 +21,22 @@ load_dotenv()
 ## Spotify
 cid = os.getenv('SPOTIFY_CLIENT_ID')
 secret = os.getenv('SPOTIFY_SECRET_ID')
-#token = 'BQBdXPZug3XPbOsN5ta1kapirUGcDT_z4YcMV-Abm47PXdwU49Td86tuBSzbzUDbXIwRKlBdpYLy4tiQ07p6zr5BGjNnpKyTJZM9dQdW8UZnVX_cSdaDoVWm-l_Aq1DKuIyjt8HqNw'
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-#spotify_baseUrl = 'https://api.spotify.com'
 
 #### ROUTES
 
-#id = '4MCBfE4596Uoi2O4DtmEMz'
-
+# test route
 @app.route('/', methods=['GET'])
 def index():
     return "Hi"
 
-@app.route('/server/search/<string:term>', methods=['GET'])
+# route to search for a term
+@app.route('/search/<string:term>', methods=['GET'])
 def search(term):
-    #term_spotify = term.replace('_','+')
-    search_results = sp.search(q=term, type='track', limit=1)
-    return {'data': search_results}
+    search_results = sp.search(q=term, type='track', limit=20)
+    return search_results
 
 # 62zFEHfAYl5kdHYOivj4BC
 # 6sbXGUn9V9ZaLwLdOfpKRE

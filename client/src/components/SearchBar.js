@@ -8,8 +8,7 @@ const SearchBar = ({ search }) => {
     // function to submit search term
     const onFormSubmit = (event) => {
         event.preventDefault();
-        //search(searchTerm);
-        console.log(searchTerm);
+        search(searchTerm);
         setSearchTerm('');
     }
     return (

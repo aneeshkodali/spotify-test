@@ -1,30 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import server from '../api/server';
-import axios from 'axios';
 
 import SearchBar from './SearchBar';
+import SearchResults from './SearchResults';
 
 const App = () => {
-
-    const [test, setTest] = useState('hello')
-    const search = async () => {
-        const response = await server.get('/audio-features/6sbXGUn9V9ZaLwLdOfpKRE');
-        setTest(response.data.data)
-    }
-
-    useEffect(() => {
-        search()
-    }, [])
-
 
     // state for track search results
     const [searchResults, setSearchResults] = useState([]);
 
+    // function to search for term and update search results
+    const search = async (term) => {
+        const response = await server.get(`/search/${term}`);
+        setSearchResults(response.data.tracks.items)
+    }
+
+    //6sbXGUn9V9ZaLwLdOfpKRE
+
     return (
         <div>
             APP
-            {test[0].acousticness}
             <SearchBar search={search} />
+            <SearchResults searchResults={searchResults} />
         </div>
     );
 };
