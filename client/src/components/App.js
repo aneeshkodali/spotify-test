@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import server from '../api/server';
 import axios from 'axios';
 
+import SearchBar from './SearchBar';
+
 const App = () => {
 
     const [test, setTest] = useState('hello')
@@ -22,6 +24,7 @@ const App = () => {
         <div>
             APP
             {test[0].acousticness}
+            <SearchBar search={search} />
         </div>
     );
 };
