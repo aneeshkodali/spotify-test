@@ -9,11 +9,13 @@
 import os
 from dotenv import load_dotenv
 from flask import Flask, redirect
+from flask_cors import CORS 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
 #### APP SETUP
 app = Flask(__name__)
+CORS(app)
 load_dotenv()
 
 ## Spotify
@@ -51,7 +53,7 @@ def getAudioAnalysis(id):
 def getAudioFeatures(id):
     #uri = f"spotify:track:{id}"
     audio_features = sp.audio_features(id)
-    return {'response': audio_features}
+    return {'data': audio_features}
 
 
 if __name__ == "__main__":
