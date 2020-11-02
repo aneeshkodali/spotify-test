@@ -7,7 +7,6 @@ const App = () => {
     const [test, setTest] = useState('hello')
     const search = async () => {
         const response = await server.get('/audio-features/6sbXGUn9V9ZaLwLdOfpKRE');
-        console.log(response.data.data);
         setTest(response.data.data)
     }
 
