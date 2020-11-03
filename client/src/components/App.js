@@ -3,7 +3,7 @@ import server from '../api/server';
 
 import SearchBar from './Search/SearchBar';
 import SearchResults from './Search/SearchResults';
-import Library from './Library';
+import Library from './Library/Library';
 
 const App = () => {
 

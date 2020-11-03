@@ -1,14 +1,14 @@
 import React from 'react';
+import Track from './Track';
 
 const Library = ({ library, removeFromLibrary }) => {
 
    const tracksRendered = library.map(track => {
-       const { id, name } = track;
+       const { id } = track;
        return (
            <React.Fragment key={id}>
-                <li>{name} - {id}</li>
+                <Track track={track} removeFromLibrary={removeFromLibrary} />
            </React.Fragment>
-           
        )
    })
 
