@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchResult = ({ searchResult }) => {
+const SearchResult = ({ searchResult, addToLibrary }) => {
 
     // extract keys from object
     const { album, artists, name } = searchResult;
@@ -13,8 +13,16 @@ const SearchResult = ({ searchResult }) => {
     return (
         <div className="card">
             <div className="content">
-                {artistsJoined} - {name}
-                <img src={album.images[2].url} alt={name} />
+                <div className="header">
+                    {artistsJoined} - {name}
+                </div>
+                <div className="image">
+                    <img src={album.images[2].url} alt={name} />
+                </div>
+            </div>
+            <div className="ui bottom attached button" onClick={() => addToLibrary(searchResult)}>
+                <i className="add icon" />
+                Add Song
             </div>
         </div>
     );
